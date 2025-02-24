@@ -23,7 +23,7 @@ public class SenhaMasterAuthenticationProvider implements AuthenticationProvider
         String senhaMaster = "@321";
 
         if (loginMaster.equals(login) && senhaMaster.equals(senha)) {
-            return new UsernamePasswordAuthenticationToken("Sou Master", null, List.of(new SimpleGrantedAuthority("ADMIN")));
+            return new UsernamePasswordAuthenticationToken("Sou Master", null, List.of(new SimpleGrantedAuthority("ROLE_ADMIN")));
         }
 
         return null;

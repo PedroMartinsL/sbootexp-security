@@ -1,4 +1,4 @@
-package io.github.pedromartinsl.sbootexp_security;
+package io.github.pedromartinsl.sbootexp_security.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,5 +15,10 @@ public class FooController {
     @GetMapping("/private")
     public ResponseEntity<String> privateRoute() {
         return ResponseEntity.ok("Private route ok!");
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<String> adminRoute() {
+        return ResponseEntity.ok("Admin route ok!");
     }
 }
