@@ -3,11 +3,12 @@ package io.github.pedromartinsl.sbootexp_security.config;
 import java.util.List;
 
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+
+import io.github.pedromartinsl.sbootexp_security.domain.security.CustomAuthentication;
+import io.github.pedromartinsl.sbootexp_security.domain.security.IdentificacaoUsuario;
 
 @Component
 public class SenhaMasterAuthenticationProvider implements AuthenticationProvider {
@@ -23,7 +24,8 @@ public class SenhaMasterAuthenticationProvider implements AuthenticationProvider
         String senhaMaster = "@321";
 
         if (loginMaster.equals(login) && senhaMaster.equals(senha)) {
-            return new UsernamePasswordAuthenticationToken("Sou Master", null, List.of(new SimpleGrantedAuthority("ROLE_ADMIN")));
+            IdentificacaoUsuario identificacaoUsuario = new IdentificacaoUsuario("Sou Master", "Master", loginMaster, List.of("ADMIN"));
+            return new CustomAuthentication(identificacaoUsuario);
         }
 
         return null;
